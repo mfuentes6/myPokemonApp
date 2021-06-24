@@ -1,0 +1,14 @@
+version: "3.4"
+
+
+services:
+  angular-pokemon:
+    container_name: angular-pokemon
+    image: ng-pokemon
+    build:
+      context: .
+    ports:
+      - 4202:4200
+    volumes:
+      - ".:/app"
+      - "/app/node_modules"
