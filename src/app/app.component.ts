@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PokemonService } from './_app-core/services/pokemon.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Michael\'s Pokemon App';
+
+  constructor (
+    public pokemonService: PokemonService
+  ) {}
 }

@@ -1,0 +1,39 @@
+<!-- <p>pokemons works!</p>
+
+<h2>{{ pokemon[0].name | uppercase }} Details</h2>
+<div><span>id: </span>{{pokemon[0].id}}</div>
+<div><span>name:  </span>{{pokemon[0].name}}</div>
+
+<div>
+    <label for="name">Pokemon name: </label>
+    <input id="name" [(ngModel)]="pokemon[0].name" placeholder="name">
+  </div> -->
+
+
+<!-- <h2>{{ pokemon[1].name | uppercase }} Details</h2>
+  <div><span>id: </span>{{pokemon[1].id}}</div>
+  <div><span>name:  </span>{{pokemon[1].name}}</div>
+  
+  <div>
+      <label for="name">Pokemon name: </label>
+      <input id="name" [(ngModel)]="pokemon[1].name" placeholder="name">
+    </div> -->
+
+
+    <!-- <div><span>id: </span>{{poke.id}}</div>
+    <div><span>name:  </span>{{poke.name}}</div>
+    
+    <div>
+        <label for="name">Pokemon name: </label>
+        <input id="name" [(ngModel)]="poke.name" placeholder="name">
+      </div> -->
+<div *ngIf="pokemon">
+    <h2>{{ pokemon.name | uppercase }} Details</h2>
+    <div><span>id: </span>{{pokemon.id}}</div>
+    <div><span>name: </span>{{pokemon.name}}</div>
+
+    <div>
+        <label for="name">Pokemon name: </label>
+        <input id="name" [(ngModel)]="pokemon.name" placeholder="name">
+    </div>
+</div>
