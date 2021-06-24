@@ -9,12 +9,12 @@ import { MessageService } from './message.service';
 })
 export class PokemonService {
 
-  constructor( public messageService: MessageService) { console.log("hello world") }
+  constructor(public messageService: MessageService) { console.log("hello world") }
 
-  public getPokemon(i: number): Observable <Pokemon[]>  {
+  public getPokemon(i: number): Observable<Pokemon[]> {
     this.messageService.add("Pokemon Service fetched Pokemon");
-    if(i === 0){
-      return throwError({errorMessage: 'Some error'});
+    if (i === 0) {
+      return throwError({ errorMessage: 'Some error' });
     }
     return of(mockPokemon);
   }
