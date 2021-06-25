@@ -7,33 +7,23 @@ import { PokemonService } from '../_app-core/services/pokemon.service';
   templateUrl: './pokemons.component.html',
   styleUrls: ['./pokemons.component.sass']
 })
-export class PokemonsComponent implements OnInit {
+export class PokemonsComponent {
   selectedPokemon?: Pokemon;
-  pokemon: Pokemon[] = [];
+  pokemon: any;
   constructor(public pokemonService: PokemonService, public messageService: MessageService) { }
 
-  ngOnInit(): void {
-    this.getPokemons(Math.round(Math.random()));
-  }
 
-  public selectPokemons(pokemon: any): void {
-    console.log(pokemon);
-    this.selectedPokemon = pokemon;
-    this.messageService.add(`Selected ${pokemon.name}`);
-  }
 
-  public getPokemons(i: number): void{
+
+  public getPokemon(i: string): void{
     this.pokemonService.getPokemon(i).subscribe(p =>{
       this.pokemon = p;
     }, (err) => {
       console.error("Something went wrong");
-      setTimeout(()=>{
-        this.getPokemons(Math.round(Math.random()));
-      }, 1000);
     }, () => {
       console.info("done");
     });
   }
-  
+
 
 }

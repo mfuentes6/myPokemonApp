@@ -13,7 +13,7 @@
 <!-- <h2>{{ pokemon[1].name | uppercase }} Details</h2>
   <div><span>id: </span>{{pokemon[1].id}}</div>
   <div><span>name:  </span>{{pokemon[1].name}}</div>
-  
+
   <div>
       <label for="name">Pokemon name: </label>
       <input id="name" [(ngModel)]="pokemon[1].name" placeholder="name">
@@ -22,18 +22,30 @@
 
     <!-- <div><span>id: </span>{{poke.id}}</div>
     <div><span>name:  </span>{{poke.name}}</div>
-    
+
     <div>
         <label for="name">Pokemon name: </label>
         <input id="name" [(ngModel)]="poke.name" placeholder="name">
       </div> -->
-<div *ngIf="pokemon">
+<div *ngIf="pokemon" class="row justify-content-center">
+  <div class="col-auto" align="center">
     <h2>{{ pokemon.name | uppercase }} Details</h2>
-    <div><span>id: </span>{{pokemon.id}}</div>
-    <div><span>name: </span>{{pokemon.name}}</div>
+    <img [src]="pokemon.sprites.front_default" width="200" height="200">
+    <div align="left"><span>NAME: </span>{{pokemon.name | titlecase}}</div>
+    <div align="left"><span>ID: </span>{{pokemon.id}}</div>
+    <div align="left"><span>TYPE: </span> <span *ngFor="let ptype of pokemon.types">{{ptype.type.name | titlecase}} </span></div>
+    <div align="left"><span>HP: </span>{{pokemon.stats[0].base_stat}}</div>
+    <div align="left"><span>ATTACK: </span>{{pokemon.stats[1].base_stat}}</div>
+    <div align="left"><span>DEFENSE: </span>{{pokemon.stats[2].base_stat}}</div>
+    <div align="left"><span>SP-ATK: </span>{{pokemon.stats[3].base_stat}}</div>
+    <div align="left"><span>SP-DEF: </span>{{pokemon.stats[4].base_stat}}</div>
+    <div align="left"><span>SPEED: </span>{{pokemon.stats[5].base_stat}}</div>
 
-    <div>
+
+
+    </div>
+    <!-- <div>
         <label for="name">Pokemon name: </label>
         <input id="name" [(ngModel)]="pokemon.name" placeholder="name">
-    </div>
+    </div> -->
 </div>

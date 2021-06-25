@@ -1,10 +1,9 @@
 
-
-
-<div class="pokemon" *ngFor="let poke of pokemon">
-    <h2  (click)="selectPokemons(poke)"><span [class.selected]="poke === selectedPokemon">{{ poke.name | uppercase }} Details</span></h2>
-</div>
-    <app-pokemon-details [pokemon]="selectedPokemon"></app-pokemon-details>
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Pokemon Selection</mat-label>
+  <input #PokeInput matInput placeholder="Ex. pikachu" value="10" (keyup.enter)="getPokemon(PokeInput.value)">
+</mat-form-field>
+    <app-pokemon-details [pokemon]="pokemon"></app-pokemon-details>
 <!-- <div *ngIf="selectedPokemon">
     <h2>{{ selectedPokemon.name | uppercase }} Details</h2>
     <div><span>id: </span>{{selectedPokemon.id}}</div>
