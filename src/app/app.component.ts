@@ -10,8 +10,6 @@ import {
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'Michael\'s Pokemon App';
-  faUsers = faUsers;
 
   constructor (
     public pokemonService: PokemonService

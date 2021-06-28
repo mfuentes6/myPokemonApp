@@ -1,5 +1,18 @@
 
-export interface Pokemon {
+
+export class Pokemon {
+  public static typeMap: Map<string, string> = new Map([
+    ["electric", "bolt"],
+    ["water", "water_drop"],
+    ["fire", "local_fire_department"],
+    ["normal", "radio_button_unchecked"],
+    ["flying", "air"],
+    ["bug", "bug_report"],
+    ["dark", "nightlight_round"],
+    ["fairy", "stars"],
+    ["fighting", "sports_mma"],
+    ["ghost", "balcony"],
+  ]);
   abilities: (AbilitiesEntity)[] | null;
   base_experience: number;
   forms: (AbilityOrFormsEntityOrVersionOrItemOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies)[] | null;
@@ -18,6 +31,40 @@ export interface Pokemon {
   stats: (StatsEntity)[];
   types: (TypesEntity)[];
   weight: number;
+
+  public get typeList(): string {
+    const typeArray: string[] = [];
+    this.types.forEach(o => typeArray.push(o.type.name));
+    return typeArray.join('/');
+  }
+​
+  public get startingGen(): string {
+    return this.sprites.versions['generation-i']
+    ? 'Gen 1'
+    : this.sprites.versions['generation-ii']
+    ? 'Gen 2'
+    : this.sprites.versions['generation-iii']
+    ? 'Gen 3'
+    : this.sprites.versions['generation-iv']
+    ? 'Gen 4'
+    : this.sprites.versions['generation-v']
+    ? 'Gen 5'
+    : this.sprites.versions['generation-vi']
+    ? 'Gen 6'
+    : this.sprites.versions['generation-vii']
+    ? 'Gen 7'
+    : this.sprites.versions['generation-viii']
+    ? 'Gen 8'
+    : 'U/A';
+  }
+​
+  public get isCurrentGen(): boolean {
+    return this.sprites.versions['generation-viii'] ? true : false;
+  }
+
+  constructor(init: Partial<Pokemon>) {
+    Object.assign(this, init);
+  }
 }
 export interface AbilitiesEntity {
   ability: AbilityOrFormsEntityOrVersionOrItemOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;

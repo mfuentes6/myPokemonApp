@@ -8,6 +8,10 @@ const routes: Routes = [
     path: "",
     component: PokemonsComponent
   },
+  {
+    path: "pokemon/:term",
+    component: PokemonsComponent
+  },
 
   {
     path: "messages",
