@@ -9,7 +9,6 @@ import { PokemonService } from '../_app-core/services/pokemon.service';
   styleUrls: ['./pokemons.component.sass'],
 })
 export class PokemonsComponent {
-  public term = 'pikachu';
 
   constructor(
     public pokemonService: PokemonService,
@@ -19,11 +18,16 @@ export class PokemonsComponent {
   ) {
     const newTerm = this.activatedRoute.snapshot.paramMap.get('term');
     if (newTerm) {
-      this.term = newTerm;
+      this.pokemonService.term = newTerm;
+      this.pokemonService.pTerm = newTerm;
     }
   }
 
   public getPokemon(i: string): void {
-    this.router.navigate(['pokemon', i]);
+    console.log(i);
+    if (i != this.pokemonService.pTerm) {
+      this.pokemonService.pTerm = i;
+      this.router.navigate(['pokemon', i]);
+    }
   }
 }

@@ -12,7 +12,7 @@ export class MessageService {
   ) {}
 
   public add(message: string): void {
-    this.toastrService.info(message, "Query logged");
+    // this.toastrService.info(message, "Query logged");
     this.messages.push(message);
   }
 

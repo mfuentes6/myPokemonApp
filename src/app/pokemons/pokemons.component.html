@@ -1,9 +1,20 @@
-
-<mat-form-field class="example-full-width" appearance="fill">
-  <mat-label>Pokemon Selection</mat-label>
-  <input #PokeInput matInput placeholder="Ex. pikachu" [value]="term" (keyup.enter)="getPokemon(PokeInput.value)">
-</mat-form-field>
-<app-pokemon-details></app-pokemon-details>
+<div class="row">
+  <div class="col-3">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Pokemon Selection</mat-label>
+      <input
+        #PokeInput
+        matInput
+        placeholder="Ex. pikachu"
+        [value]="pokemonService.term"
+        (keyup.enter)="getPokemon(PokeInput.value)"
+      />
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <app-pokemon-details></app-pokemon-details>
+  </div>
+</div>
 <!-- <div *ngIf="selectedPokemon">
     <h2>{{ selectedPokemon.name | uppercase }} Details</h2>
     <div><span>id: </span>{{selectedPokemon.id}}</div>
@@ -14,4 +25,3 @@
         <input id="name" [(ngModel)]="selectedPokemon.name" placeholder="name">
     </div>
 </div> -->
-

@@ -25,48 +25,60 @@
         <label for="name">Pokemon name: </label>
         <input id="name" [(ngModel)]="poke.name" placeholder="name">
       </div> -->
-<div *ngIf="pokemon" class="row justify-content-center mb-3">
+<div id="pokeCard">
+<div *ngIf="pokemonService.currentPokemon" class="row justify-content-center pt-5" style="min-height:650px">
   <div class="col-auto" align="center">
-    <h2>{{ pokemon.name | uppercase }} Details</h2>
+    <h2><span style="background-color: white; border-radius: 10px; padding: 5px 10px">{{ pokemon.name | uppercase }} Details</span></h2>
     <img [src]="pokemon.sprites.front_default" width="200" height="200" />
 
     <div align="middle">
       <span class="bold">NAME: </span>{{ pokemon.name | titlecase }}
+      <audio id="audio" controls style="display: none">
+      <source [src]="'https://play.pokemonshowdown.com/audio/cries/' + pokemon.name +'.mp3'">
+      </audio>
     </div>
     <div align="middle"><span class="bold">ID: </span>{{ pokemon.id }}</div>
     <div class="container">
       <div align="left">
         <span class="bold">TYPE: </span>
-        <span *ngFor="let ptype of pokemon.types">
+        <span *ngFor="let ptype of pokemon.types; let i = index">
+          <span *ngIf="i != 0">|</span>
           <img
             [src]="'assets/icons/' + ptype.type.name + '.svg'"
-            style="width: 20px; height: auto"
-          /> |
+            style="width: 20px; height: auto; margin: 0px 5px"
+          />
+
         </span>
       </div>
-      <ng-container *ngFor="let stat of statsArray; let i = index">
-        <div align="left">
-          <span class="bold">{{ stat }}: </span>{{ pokemon.stats[i].base_stat }}
+        <div class="row" style="max-width: 350px;">
+        <div
+          *ngFor="let stat of statsArray; let i = index"
+          class="col-12 col-md-6"
+        >
+          <div align="left">
+            <span class="bold">{{ stat }}: </span
+            >{{ pokemon.stats[i].base_stat }}
+          </div>
+          <div class="progress">
+            <div
+              class="progress-bar"
+              role="progressbar"
+              [ngStyle]="{
+                width: (100 * pokemon.stats[i].base_stat) / 255 + '%',
+                background:
+                  (100 * pokemon.stats[i].base_stat) / 255 < 20
+                    ? 'red'
+                    : (100 * pokemon.stats[i].base_stat) / 255 > 50
+                    ? 'green'
+                    : 'orange'
+              }"
+              aria-valuenow="0"
+              aria-valuemin="0"
+              aria-valuemax="255"
+            ></div>
+          </div>
         </div>
-        <div class="progress">
-          <div
-            class="progress-bar"
-            role="progressbar"
-            [ngStyle]="{
-              width: (100 * pokemon.stats[i].base_stat) / 255 + '%',
-              background:
-                (100 * pokemon.stats[i].base_stat) / 255 < 20
-                  ? 'red'
-                  : (100 * pokemon.stats[i].base_stat) / 255 > 50
-                  ? 'green'
-                  : 'orange'
-            }"
-            aria-valuenow="0"
-            aria-valuemin="0"
-            aria-valuemax="255"
-          ></div>
-        </div>
-      </ng-container>
+      </div>
 
       <!-- <div>
         <label for="name">Pokemon name: </label>
@@ -74,4 +86,5 @@
     </div> -->
     </div>
   </div>
+</div>
 </div>
