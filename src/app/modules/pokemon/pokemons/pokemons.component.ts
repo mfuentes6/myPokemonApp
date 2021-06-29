@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MessageService } from '../_app-core/services/message.service';
-import { PokemonService } from '../_app-core/services/pokemon.service';
+import { MessageService } from '../../../_app-core/services/message.service';
+import { PokemonService } from '../_pokemon-core/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemons',
@@ -27,7 +27,7 @@ export class PokemonsComponent {
     console.log(i);
     if (i != this.pokemonService.pTerm) {
       this.pokemonService.pTerm = i;
-      this.router.navigate(['pokemon', i]);
+      this.router.navigateByUrl('/pokemon/search/' + i);
     }
   }
 }

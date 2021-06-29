@@ -2,8 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Pokemon } from 'src/app/_app-core/models/pokemon.model';
-import { PokemonService } from '../_app-core/services/pokemon.service';
+import { Pokemon } from '../_pokemon-core/models/pokemon.model';
+import { PokemonService } from '../_pokemon-core/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-details',

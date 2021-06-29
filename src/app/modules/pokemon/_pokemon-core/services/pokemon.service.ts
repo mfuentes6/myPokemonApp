@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
-import { PokemonsComponent } from 'src/app/pokemons/pokemons.component';
 import { Pokemon } from '../models/pokemon.model';
-import { MessageService } from './message.service';
 import {HttpClient} from '@angular/common/http'
+import { MessageService } from 'src/app/_app-core/services/message.service';
 
 @Injectable({
   providedIn: 'root'

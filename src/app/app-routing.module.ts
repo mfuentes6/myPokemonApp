@@ -1,22 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MessagesComponent } from './messages/messages.component';
-import { PokemonsComponent } from './pokemons/pokemons.component';
+import { ModuleTwoComponent } from './modules/moduleTwo/moduleTwo.component';
+import { PokemonComponent } from './modules/pokemon/pokemon.component';
 
 const routes: Routes = [
   {
-    path: "",
-    component: PokemonsComponent
+    path: '',
+    redirectTo: 'pokemon'
   },
   {
-    path: "pokemon/:term",
-    component: PokemonsComponent
+    path: 'pokemon',
+    component: PokemonComponent,
+    loadChildren: () =>
+      import('./modules/pokemon/pokemon.module').then((m) => m.PokemonModule)
   },
-
   {
-    path: "messages",
-    component: MessagesComponent
+    path: 'm2',
+    component: ModuleTwoComponent,
+    loadChildren: () =>
+      import('./modules/moduleTwo/moduleTwo.module').then((m) => m.ModuleTwoModule)
   },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({
